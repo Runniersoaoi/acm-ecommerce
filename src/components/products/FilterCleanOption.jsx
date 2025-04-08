@@ -12,7 +12,7 @@ export const FilterCleanOption = () => {
         <AccordionTrigger className="[&>svg]:hidden hover:no-underline">
           <div className="w-full flex justify-between items-center">
             <span>Filtros:</span>
-            <button className="text-blue-500 hover:underline">Limpiar todo</button>
+            <span className="text-blue-500 hover:underline">Limpiar todo</span>
           </div>
         </AccordionTrigger>
       </AccordionItem>
