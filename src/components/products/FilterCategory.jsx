@@ -9,9 +9,17 @@ import { CheckboxItem } from "./CategoryItem";
 
 export const FilterCategory = () => {
 
-  const countByTag = initialData.products.reduce((acc, product) => {
-    product.tags.forEach(tag => {
-      acc[tag] = (acc[tag] || 0) + 1;
+  const categoryEsp = {
+    sweatshirt: 'Sudaderas',
+    jacket: 'Chaquetas',
+    shirt: 'Camisas',
+    hoodie: 'Capuchas',
+    hats: 'Gorras'
+  }
+
+  const countByCategory = initialData.products.reduce((acc, product) => {
+    product.tags.forEach(category => {
+      acc[category] = (acc[category] || 0) + 1;
     });
     return acc;
   }, {});
@@ -21,8 +29,8 @@ export const FilterCategory = () => {
       <AccordionItem value="item-1">
         <AccordionTrigger className="hover:no-underline">Categoría</AccordionTrigger>
         <AccordionContent className="flex flex-col">
-          {Object.entries(countByTag).map(([ tag, count ]) => (
-            <CheckboxItem key={tag} tag={tag} count={count}/>
+          {Object.entries(countByCategory).map(([ category, count ]) => (
+            <CheckboxItem key={category} tag={categoryEsp[category]} count={count}/>
           ))}
         </AccordionContent>
       </AccordionItem>

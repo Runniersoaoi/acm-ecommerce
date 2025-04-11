@@ -17,8 +17,8 @@ export const CheckboxItem = ({ tag, count }) => {
         w-full m-0.5 flex items-center 
         cursor-pointer group
         ${isChecked ? "text-blue-800" : ""}
-        `}
-    >
+        `}>
+
       <div className="w-full flex flex-row items-center cursor-pointer ">
         <Checkbox 
           id={tag} 
@@ -28,20 +28,21 @@ export const CheckboxItem = ({ tag, count }) => {
             transition-colors
           data-[state=checked]:bg-blue-400
           data-[state=checked]:border-blue-400
-          "
-      />
+          "/>
+
         <div 
           className={`
             flex justify-between flex-1 mt-0.5
           `}>
+
           <span 
             className={`
               ml-3 transition-colors font-medium
               ${isChecked ? 'text-blue-800' : 'text-gray-500 group-hover:text-blue-800'}
-            `}
-            >
+            `}>
               {tag}
           </span>
+
           <span 
             className={`
               rounded-full px-2 mr-4 font-medium
