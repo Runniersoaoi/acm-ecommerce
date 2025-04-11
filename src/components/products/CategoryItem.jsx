@@ -1,14 +1,13 @@
 import { Checkbox } from "@/components/ui/checkbox"
 import React, {useState} from "react"
 
-
 export const CheckboxItem = ({ tag, count }) => {
 
-      const [isChecked, setIsChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(false)
 
-      const handleChecboxChange = (checked) => {
-        setIsChecked(checked)
-      }
+  const handleChecboxChange = (checked) => {
+    setIsChecked(checked)
+  }
 
   return (
     <label 
