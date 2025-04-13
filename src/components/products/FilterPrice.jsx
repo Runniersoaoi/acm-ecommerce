@@ -17,7 +17,7 @@ export const FilterPrice = () => {
       <AccordionItem value="item-1">
         <AccordionTrigger className="hover:no-underline">Precio</AccordionTrigger>
         <AccordionContent>
-          <span className="text-sm mt-3 text-gray-700">Desde ${range[0]} hasta ${range[1]}</span>
+          <span className="text-sm mt-3 text-gray-700">Desde S/.{range[0]} hasta S/.{range[1]}</span>
           <Slider 
             className="mt-4" 
             onValueChange={setRange}
