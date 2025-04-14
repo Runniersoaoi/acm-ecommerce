@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { initialData } from "@/stores/seed-data";
-import { CheckboxItem } from "./CategoryItem";
+import { CheckboxItem } from "./CheckboxItem";
 
 export const FilterGender = () => {
 
@@ -23,10 +23,13 @@ export const FilterGender = () => {
   }, {});
 
   return (
-    <Accordion collapsible className="border-1 px-4">
+    <Accordion collapsible className="px-6 bg-white rounded-md">
       <AccordionItem value="item-1">
-        <AccordionTrigger className="hover:no-underline">Sección</AccordionTrigger>
+        <AccordionTrigger className="hover:no-underline cursor-pointer [&>svg]:-translate-y-[1px] [&>svg]:!h-6 [&>svg]:!w-6">
+          Sección
+        </AccordionTrigger>
         <AccordionContent className="flex flex-col">
+          <div className="h-px bg-gray-300 mb-2 w-full" />
           {Object.entries(countByGender).map(([ gender, count ]) => (
             <CheckboxItem key={gender} tag={genderEsp[gender]} count={count}/>
           ))}

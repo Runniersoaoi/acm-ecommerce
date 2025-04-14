@@ -5,7 +5,7 @@ import { FilterSize } from "./FilterSize";
 
 export const Filters = () => {
   return (
-    <div className="m-2 flex flex-col w-1/5 gap-4">
+    <div className="m-2 flex flex-col w-1/4 gap-6">
       <FilterCategory />
       <FilterSize />
       <FilterGender />

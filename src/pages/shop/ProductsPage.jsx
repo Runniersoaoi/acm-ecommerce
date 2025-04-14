@@ -1,11 +1,11 @@
 import React from "react";
-import { OptionSection } from "@/components/products/OptionSection";
 import { ProductSection } from "@/components/products/ProductSection";
+import { PathSection } from "@/components/products/PathSection";
 
 export const ProductsPage = () => {
   return (
     <>
-      <OptionSection />
+      <PathSection />
       <ProductSection />
     </>
   );
