@@ -18,15 +18,15 @@ export const CheckboxItem = ({ tag, count }) => {
       <div className="flex justify-between flex-1 items-center ml-3">
 
         <span className={`transition-colors font-medium
-          ${isChecked ? 'text-blue-800' : 'text-gray-600 group-hover:text-blue-800'}
+          ${isChecked ? 'text-blue-800' : 'text-gray-700 group-hover:text-blue-800'}
           `}>
             {tag}
         </span>
 
-        <span className={`rounded-full px-2 mr-4 font-medium transition-colors
+        <span className={`rounded-full px-2 mr-4 font-medium transition-colors text-gray-700
             ${isChecked 
               ? 'bg-blue-800 text-white' 
-              : 'bg-gray-200 group-hover:bg-blue-800 group-hover:text-white'
+              : 'bg-gray-100 group-hover:bg-blue-800 group-hover:text-white'
             }
           `}>
             {count}

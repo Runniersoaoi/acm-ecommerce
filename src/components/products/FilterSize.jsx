@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { useState } from "react";
+import { Button } from "../ui/button";
 
 const sizeList = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
 
@@ -29,18 +30,18 @@ export const FilterSize = () => {
           <div className="h-px bg-gray-300 mb-2 w-full" />
         <div className="grid grid-cols-4 gap-3 mt-2 font-medium">
           {sizeList.map((size) => (
-            <button
+            <Button
               key={size}
               onClick={() => toggleSize(size)}
-              className={`py-1.5 text-center rounded-md cursor-pointer hover:bg-blue-800 hover:text-white transition-colors
+              className={`cursor-pointer text-back  transition-colors
                 ${activeSizes.includes(size)
                   ? 'bg-blue-800 text-white' 
-                  : 'bg-gray-200'
+                  : 'bg-gray-100 hover:bg-gray-200'
                 }`
               }
             >
               {size}
-            </button>
+            </Button>
           ))}
         </div>
 

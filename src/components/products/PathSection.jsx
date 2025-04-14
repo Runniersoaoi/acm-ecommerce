@@ -7,11 +7,10 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 
-
 export const PathSection = () => {
   return (
     <div className="flex justify-between items-center max-w-7xl mx-auto w-full p-4 py-10">
-      <h1 className="text-3xl font-bold">Explora todos los productos</h1>
+      <h1 className="text-3xl font-bold text-blue-950">Explora todos los productos</h1>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
