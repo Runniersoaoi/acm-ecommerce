@@ -6,16 +6,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export const ViewOptions = () => {
-  const [selectedOrder, setSelectedOrder] = useState("Últimos productos");
-
+  // const [selectedOrder, setSelectedOrder] = useState("Últimos productos");
+  const { filteredProducts } = useSelector((state) => state.products);
   const [selectedView, setSelectedView] = useState("gridView");
 
   return (
     <div className="m-2 w-4/5 px-4 bg-white rounded-md flex items-center justify-between">
       <div className="flex items-center">
-        <Select value={selectedOrder} onValueChange={setSelectedOrder}>
+        {/* <Select value={selectedOrder} onValueChange={setSelectedOrder}>
           <SelectTrigger className="w-[200px] text-gray-700">
             <SelectValue />
           </SelectTrigger>
@@ -23,9 +24,12 @@ export const ViewOptions = () => {
             <SelectItem value="Últimos productos">Últimos productos</SelectItem>
             <SelectItem value="Mejor vendidos">Mejor vendidos</SelectItem>
           </SelectContent>
-        </Select>
+        </Select> */}
 
-        <span className="m-4">Mostrando 10 de 52 productos</span>
+        <span className="m-4">
+          Mostrando {filteredProducts ? filteredProducts.length : 52} de 50
+          productos
+        </span>
       </div>
 
       <div className="flex gap-2">

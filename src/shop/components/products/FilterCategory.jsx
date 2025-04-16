@@ -4,8 +4,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { initialData } from "@/store/seed-data";
 import { CheckboxItem } from "./CheckboxItem";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilterCategory } from "@/store/shop/shopSlice";
 
 export const FilterCategory = () => {
   const categoryEsp = {
@@ -16,12 +17,30 @@ export const FilterCategory = () => {
     hats: "Gorras",
   };
 
-  const countByCategory = initialData.products.reduce((acc, product) => {
+  const categoryInverted = Object.entries(categoryEsp).reduce(
+    (acc, [en, es]) => {
+      acc[es] = en;
+      return acc;
+    },
+    {}
+  );
+
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.products);
+  const countByCategory = products.reduce((acc, product) => {
     product.tags.forEach((category) => {
       acc[category] = (acc[category] || 0) + 1;
     });
     return acc;
   }, {});
+
+  const onSelectCategory = (selectedEspCategory) => {
+    const englishCategory = categoryInverted[selectedEspCategory];
+
+    if (englishCategory) {
+      dispatch(setFilterCategory(englishCategory));
+    }
+  };
 
   return (
     <Accordion collapsible className="px-6 bg-white rounded-md">
@@ -37,6 +56,7 @@ export const FilterCategory = () => {
               key={category}
               tag={categoryEsp[category]}
               count={count}
+              onSelect={onSelectCategory}
             />
           ))}
         </AccordionContent>

@@ -4,8 +4,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { initialData } from "@/store/seed-data";
 import { CheckboxItem } from "./CheckboxItem";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilterSection } from "@/store/shop/shopSlice";
 
 export const FilterGender = () => {
   const genderEsp = {
@@ -15,11 +16,27 @@ export const FilterGender = () => {
     unisex: "Unisex",
   };
 
-  const countByGender = initialData.products.reduce((acc, product) => {
+  const categoryInverted = Object.entries(genderEsp).reduce((acc, [en, es]) => {
+    acc[es] = en;
+    return acc;
+  }, {});
+
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.products);
+
+  const countByGender = products.reduce((acc, product) => {
     const gender = product.gender;
     acc[gender] = (acc[gender] || 0) + 1;
     return acc;
   }, {});
+
+  const onSelectGender = (selectedGenderCategory) => {
+    const englishGender = categoryInverted[selectedGenderCategory];
+
+    if (englishGender) {
+      dispatch(setFilterSection(englishGender));
+    }
+  };
 
   return (
     <Accordion collapsible className="px-6 bg-white rounded-md">
@@ -30,7 +47,12 @@ export const FilterGender = () => {
         <AccordionContent className="flex flex-col">
           <div className="h-px bg-gray-300 mb-2 w-full" />
           {Object.entries(countByGender).map(([gender, count]) => (
-            <CheckboxItem key={gender} tag={genderEsp[gender]} count={count} />
+            <CheckboxItem
+              key={gender}
+              tag={genderEsp[gender]}
+              count={count}
+              onSelect={onSelectGender}
+            />
           ))}
         </AccordionContent>
       </AccordionItem>
